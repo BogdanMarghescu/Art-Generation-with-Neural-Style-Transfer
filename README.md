@@ -1,0 +1,2 @@
+# Art-Generation-with-Neural-Style-Transfer
+Python application using neural style transfer and Keras in order to generate pictures with a specific style. Style transfer consists in generating an image with the same "content" as a base image, but with the "style" of a different picture (typically artistic). Inspired by the implementation of François Chollet. (https://keras.io/examples/generative/neural_style_transfer/)
