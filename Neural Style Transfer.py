@@ -109,14 +109,14 @@ def generate_image(base_img_path, style_reference_img_path, result_prefix, res_w
     style_layer_names = ["block1_conv1", "block2_conv1", "block3_conv1", "block4_conv1", "block5_conv1"]
     content_layer_name = "block5_conv2"  # The layer to use for the content loss.
     # Dimensions of the generated picture.
-    width, height = keras.preprocessing.image.load_img(base_image_path).size
+    width, height = keras.preprocessing.image.load_img(base_img_path).size
     img_nrows = res_width
     img_ncols = int(width * img_nrows / height)
     # The training loop
     optimizer = keras.optimizers.Adam(learning_rate=learning_rate)
-    base_image = preprocess_image(base_image_path, img_nrows, img_ncols)
-    style_reference_image = preprocess_image(style_reference_image_path, img_nrows, img_ncols)
-    combination_image = tf.Variable(preprocess_image(base_image_path, img_nrows, img_ncols))
+    base_image = preprocess_image(base_img_path, img_nrows, img_ncols)
+    style_reference_image = preprocess_image(style_reference_img_path, img_nrows, img_ncols)
+    combination_image = tf.Variable(preprocess_image(base_img_path, img_nrows, img_ncols))
     for i in range(1, iterations + 1):
         loss, grads = compute_loss_and_grads(feature_extractor, combination_image, base_image, style_reference_image,
                                              img_nrows, img_ncols, style_layer_names, content_layer_name)
